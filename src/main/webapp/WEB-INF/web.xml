@@ -9,16 +9,27 @@
             30
         </session-timeout>
     </session-config>
-
-    <!--宣告 Servlet  -->
-<servlet>
-        <servlet-name>HellowGenericServlet</servlet-name>
-        <servlet-class> com.web.controller.HellowGenericServlet</servlet-class>   
-</servlet>
-<!--  Servlet給Client
-URL Pattern對應設定 -->
-<servlet-mapping>
-    <servlet-name>HellowGenericServlet</servlet-name>   
-    <url-pattern>/hi</url-pattern>
-</servlet-mapping>
+    
+    <!-- 宣告 Servlet -->
+    <servlet>
+        <servlet-name>HelloGenericServlet</servlet-name>
+        <servlet-class>com.web.controller.HelloGenericServlet</servlet-class>
+    </servlet>
+    
+    <servlet>
+        <servlet-name>HelloHttpServlet</servlet-name>
+        <servlet-class>com.web.controller.HelloHttpServlet</servlet-class>
+    </servlet>
+    
+    <!-- Servlet 給 Client url 對應配置 -->
+    <servlet-mapping>
+        <url-pattern>/hi</url-pattern>
+        <servlet-name>HelloGenericServlet</servlet-name>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <url-pattern>/hello</url-pattern>
+        <servlet-name>HelloHttpServlet</servlet-name>
+    </servlet-mapping>
+    
 </web-app>
