@@ -17,6 +17,8 @@
                 <button type="submit" class="pure-button pure-button-primary">傳送</button>
                 <button type="button" onclick="location.href='/JavaWeb0531/controller/bmi_session'"<%--Get--%>
                  class="pure-button pure-button-primary">檢視</button>
+                 <button type="button" onclick="location.href='/JavaWeb0531/controller/bmi_session_invalid'"<%--Get--%>
+                 class="pure-button pure-button-primary">刪除</button>
             </fieldset>
         </form>
     </body>
