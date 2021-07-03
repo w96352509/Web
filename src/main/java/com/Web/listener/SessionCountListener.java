@@ -1,28 +1,26 @@
-package com.web.listener;
+package com.Web.listener;
 
 import javax.servlet.ServletContext;
 import javax.servlet.annotation.WebListener;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
-
 @WebListener
-public class SessionCountListener implements HttpSessionListener {
-
-    @Override
-    public void sessionCreated(HttpSessionEvent se) {
-        ServletContext application = se.getSession().getServletContext();
-        if(application.getAttribute("count") == null) {
-            application.setAttribute("count", 0);
-        }
-        int count = Integer.parseInt(application.getAttribute("count").toString());
-        count++;
-        application.setAttribute("count", count);
-        System.out.println("sessionCreated: " + count);
-    }
+public class SessionCountListener implements HttpSessionListener{
 
     @Override
     public void sessionDestroyed(HttpSessionEvent se) {
         ServletContext application = se.getSession().getServletContext();
+        if (application.getAttribute("count")==null) {
+            application.setAttribute("count", 0);
+        }
+    int count =Integer.parseInt(application.getAttribute("count").toString()) ; 
+    count++;
+    application.setAttribute("count", count);
+    System.out.println("sessionCreated: " + count);
+    }
+    @Override
+    public void sessionCreated(HttpSessionEvent se) {
+    ServletContext application = se.getSession().getServletContext();
         if(application.getAttribute("count") == null) {
             return;
         }
@@ -31,5 +29,4 @@ public class SessionCountListener implements HttpSessionListener {
         application.setAttribute("count", count);
         System.out.println("sessionDestroyed: " + count);
     }
-    
-}
+  }

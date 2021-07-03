@@ -17,13 +17,11 @@ public class BMISessionInvalidServlet extends HttpServlet {
         
         HttpSession session = req.getSession(false);
         PrintWriter out = resp.getWriter();
-        if (session !=null) {
-         out.println("Session invalid, session id: " + session.getId());   
-        session.invalidate();
-        }else{
-        out.println("已失效");
+        if(session != null) {
+            out.println("Session invalid, session id: " + session.getId());
+            session.invalidate();
+        } else {
+            out.println("Session already invalid");
         }
-        
-        
     }
 }
