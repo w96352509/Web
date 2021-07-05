@@ -17,13 +17,13 @@ public class BMISessionAuthCodeFilter extends HttpFilter {
         
         if (req.getMethod().equalsIgnoreCase("get")) { // 當get方法時取用
             chain.doFilter(req, res);
-        } else if (req.getMethod().equalsIgnoreCase("post")) {
+        } else if (req.getMethod().equalsIgnoreCase("post")) {// 當post方法時才取用Session
             // 驗證授權碼
             String code = req.getParameter("code");
             HttpSession session = req.getSession();
             Object authCode = session.getAttribute("authCode"); //轉物件防止null產生
             if (authCode != null && code.equals(authCode.toString())) {
-                session.setAttribute("authCode", null);
+                session.setAttribute("authCode", null); //比較成功時轉為空值須F5才能重置
                 chain.doFilter(req, res);
             } else {
                 session.invalidate();                                            //錯誤刪除(F5)
