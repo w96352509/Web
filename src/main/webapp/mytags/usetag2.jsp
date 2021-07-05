@@ -8,7 +8,7 @@
     </head>
     <body>
         <h1>
-            <my:hello />
+            <my:hello></my:hello>
          </h1>
     </body>
 </html>
