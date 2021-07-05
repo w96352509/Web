@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="my" uri="/tlds/mytld" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -8,7 +9,6 @@
     <body>
         <h1>
             <my:hello />
-            晚安 現在時刻:
-        </h1>
+         </h1>
     </body>
 </html>
