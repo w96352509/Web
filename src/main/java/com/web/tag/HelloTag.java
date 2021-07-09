@@ -30,11 +30,19 @@ private  Tag parentTag;
 
     @Override //開始結束
     public int doStartTag() throws JspException {
-        JspWriter out =pageContext.getOut();//取得jsp out
-        try {
+         JspWriter out =pageContext.getOut();//取得jsp out
+        if (new Date().getHours()>18) {
+       try {
              out.print("晚安");  
         } catch (Exception e) {
-        }
+        }   
+        }else{
+            try {
+             out.print("早安");  
+        } catch (Exception e) {
+        }   
+         }
+        
   return Tag.SKIP_BODY; //直接跳到doEndTag()
     }
 
