@@ -1,6 +1,5 @@
-<%@page import="java.util.Date"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="my" uri="/tlds/mytld" %>
+<%@taglib uri="/tlds/mytld" prefix="my" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -8,9 +7,8 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <my:welcome username="John">
-               現在時刻：<%=new Date() %>
-            </my:welcome>
-        
+        <h1>
+            <my:welcome username="PEKO"></my:welcome>
+        </h1>
     </body>
 </html>

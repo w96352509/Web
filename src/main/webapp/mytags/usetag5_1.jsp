@@ -8,8 +8,8 @@
     </head>
     <body>
         <h1>
-            <my:bmi h="170.0" w="80.0" ></my:bmi>
-            <my:bmi h="170" w="80" result="true" ></my:bmi>
+            <my:exchange2 symbol="USDTWD=x" symbol2="TWDUSD=x">
+              </my:exchange2>
         </h1>
     </body>
 </html>

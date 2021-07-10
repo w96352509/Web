@@ -1,6 +1,5 @@
-<%@page import="java.util.Date"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="my" uri="/tlds/mytld" %>
+<%@taglib uri="/tlds/mytld" prefix="my" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -9,11 +8,8 @@
     </head>
     <body>
         <h1>
-            <my:exchange symbol="USDTWD=x" />
+            <my:exchange symbol="USDTWD=x"></my:exchange>
+            <my:exchange symbol="TWDUSD=x"></my:exchange>
         </h1>
-        <h1>
-            <my:exchange symbol="TWDUSD=x" />
-        </h1>
-        
     </body>
 </html>

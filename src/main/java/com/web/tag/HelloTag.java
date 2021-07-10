@@ -13,6 +13,7 @@ public class HelloTag  implements Tag
 private  PageContext pageContext;
 private  Tag parentTag;
 
+
     @Override
     public void setPageContext(PageContext pc) { //jsp環境物件取得
         pageContext=pc;

@@ -17,10 +17,11 @@ CNYEUR=x
 1 TWD 兌 0.034 USD
  */
 
-public class ExchangeTag implements Tag{
+public class Exchange2 implements Tag{
 private PageContext pageContext;
 private Tag parentTag;
 private String symbol;
+private  String symbol2;
  
 @Override
     public void setPageContext(PageContext pc) {
@@ -39,18 +40,32 @@ private String symbol;
         this.symbol = symbol;
     }
 
+    public void setSymbol2(String symbol2) {
+        this.symbol2 = symbol2;
+    }
+    
+
     @Override
     public int doStartTag() throws JspException {
         JspWriter out= pageContext.getOut();
-     try {
-            if (symbol != null && symbol.length()==8) {
-            Stock stock = YahooFinance.get(symbol); //取得兌換字元
+    try {
+          if (symbol != null && symbol.length()==8) {
+            Stock stock = YahooFinance.get(symbol);//取得兌換字元
+            Stock stock2 = YahooFinance.get(symbol2);
             if (stock !=null) {
-            double price = stock.getQuote().getPrice().doubleValue(); //得到金額
-            out.print("1");
-            out.print(symbol.substring(0,3)+" ");
-            out.print(price+"");
-            out.print(symbol.substring(3,6)+"<p/>");
+           double price = stock.getQuote().getPrice().doubleValue(); //得到金額
+           out.print("1");
+           out.print(symbol.substring(0,3)+" ");
+           out.print(price+"");
+           out.print(symbol.substring(3,6)+"<p/>");
+           
+           double price2 = stock2.getQuote().getPrice().doubleValue(); //得到金額
+           out.print("1");
+           out.print(symbol.substring(0,3)+" ");
+           out.print(price2+"");
+           out.print(symbol.substring(3,6)+"<p/>");
+          
+            
             
          }else{
          out.print("無商品匯率"+symbol);

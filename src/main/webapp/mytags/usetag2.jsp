@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="my" uri="/tlds/mytld" %>
+<%@taglib uri="/tlds/mytld" prefix="my" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -9,6 +9,6 @@
     <body>
         <h1>
             <my:hello></my:hello>
-         </h1>
+            </h1>
     </body>
 </html>
