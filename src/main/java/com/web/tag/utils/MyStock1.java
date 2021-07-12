@@ -3,28 +3,47 @@ package com.web.tag.utils;
 import yahoofinance.Stock;
 import yahoofinance.YahooFinance;
 
-public class MyStock {
+public class MyStock1 {
 
     private static final String RED = "#FF0000";
     private static final String GREEN = "#005100";
     private static final String BLACK = "#000000";
     private static final String YELLOW = "#F9F900";
-    private String symbol;
-    private String name;
-    private Double price;
-    private Double change;
-    private String color;
-    private String backcolor;
-    private Double ask;
-    private Double bid;
-    private Double volume;
-    private Double colse;
+    private String symbol;//代號OK
+    private String name;//商品OK
+    private Double price;//價OK
+    private Double change;//漲幅?OK
+    private String color;//顏色OK
+    private String backcolor;//景色OK
+    private Double ask;//賣OK
+    private Double bid;//買OK
+    private Double volume;//總OK
+    private Double Hight;//高
+    private Double low;//高
+    private Double colse;//昨收
+    private Double open;
     
-
-    public MyStock() {
+    
+    public Double getOpen() {
+        return open;
     }
 
-    public MyStock(String symbol) {
+    public void setOpen(Double open) {
+        this.open = open;
+    }
+
+    public Double getLow() {
+        return low;
+    }
+
+    public void setLow(Double low) {
+        this.low = low;
+    }
+
+    public MyStock1() {
+    }
+
+    public MyStock1(String symbol) {
         setSymbol(symbol);
     }
 
@@ -39,13 +58,16 @@ public class MyStock {
             this.name = stock.getName();
             this.price = stock.getQuote().getPrice().doubleValue();
             this.change = stock.getQuote().getChangeInPercent().doubleValue();
-            this.color = YELLOW;
+            this.color = (this.change > 0) ? RED : (this.change < 0) ? GREEN : BLACK;
             this.backcolor = (this.change > 0) ? RED : GREEN;
-            this.ask=stock.getQuote().getAsk().doubleValue();
+            this.volume = stock.getQuote().getVolume().doubleValue();
+            this.Hight = stock.getQuote().getDayHigh().doubleValue();
+            this.low = stock.getQuote().getDayLow().doubleValue();
+            this.colse = stock.getQuote().getPreviousClose().doubleValue();
+            this.open = stock.getQuote().getOpen().doubleValue();
+            this.ask = stock.getQuote().getAsk().doubleValue();
             this.bid=stock.getQuote().getBid().doubleValue();
-            this.volume=stock.getQuote().getVolume().doubleValue();
-            
-          } catch (Exception e) {
+        } catch (Exception e) {
         }
     }
 
@@ -89,7 +111,6 @@ public class MyStock {
         this.ask = ask;
     }
 
- 
     public String getBackcolor() {
         return backcolor;
     }
@@ -114,6 +135,14 @@ public class MyStock {
         this.volume = volume;
     }
 
+    public Double getHight() {
+        return Hight;
+    }
+
+    public void setHight(Double Hight) {
+        this.Hight = Hight;
+    }
+
     public Double getColse() {
         return colse;
     }
@@ -122,6 +151,5 @@ public class MyStock {
         this.colse = colse;
     }
 
-   
-
 }
+

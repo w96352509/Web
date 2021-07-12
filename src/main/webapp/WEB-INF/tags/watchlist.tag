@@ -11,6 +11,9 @@
             <th>Name</th>
             <th>Price</th>
             <th>Change</th>
+            <th>Ask</th>
+            <th>Bid</th>
+            <th>Volume</th>
         </tr>
     </thead>
     <tbody>
@@ -22,8 +25,11 @@
                 <td>${ status.index }</td>
                 <td>${ symbol }</td>
                 <td>${ myStock.name }</td>
-                <td style="color: ${ myStock.color }">${ myStock.price }</td>
-                <td style="color: ${ myStock.color }">${ myStock.change }</td>
+                <td style="background-color: ${ myStock.backcolor};color : ${ myStock.color }">${ myStock.price }</td>
+                <td style="background-color: ${ myStock.backcolor};color : ${ myStock.color }">${ myStock.change}</td>
+                <td>${myStock.ask}</td>
+                <td>${myStock.bid}</td>
+                <td>${myStock.volume.intValue()}</td>
             </tr>
         </c:forEach>
     </tbody>
