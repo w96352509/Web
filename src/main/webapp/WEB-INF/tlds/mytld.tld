@@ -99,4 +99,51 @@
             <rtexprvalue>true</rtexprvalue>
         </attribute>
     </tag>
+    
+    <!-- report tag -->
+    <tag>
+        <name>report</name>
+        <tag-class>com.web.tag.ReportTag</tag-class>
+        <body-content>JSP</body-content>
+        <description>report xxx</description>
+      </tag>
+      
+      <!-- Exchange tag -->
+    <tag>
+        <name>report2</name>
+        <tag-class>com.web.tag.ReportTag2</tag-class>
+        <body-content>JSP</body-content>
+        <description>report xxx</description>
+        <attribute>
+            <name>symbol</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+     
+    <!-- Circle Area  tag -->
+    <tag>
+        <name>circleArea</name>
+        <tag-class>com.web.tag.CircleAreaTag</tag-class>
+        <body-content>empty</body-content>
+        <description>area xxx</description>
+        <attribute>
+            <name>r</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>mode</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+    <!-- Add tag -->
+    <tag>
+        <name>add</name>
+        <tag-class>com.web.tag.AddTag</tag-class>
+        <body-content>empty</body-content>
+        <description>add xxx</description>
+        <dynamic-attributes>true</dynamic-attributes>
+    </tag>
 </taglib>

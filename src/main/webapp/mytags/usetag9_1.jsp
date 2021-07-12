@@ -9,25 +9,21 @@
         <title>JSP Page</title>
         <style>
          #a{width: 80px; height: 40px; font-size: 20px;}
-          .head{
-             background-color:#003344;color: white;font-weight: bold;font-size: 30px;
-             text-align: center;padding: 10px;
-             }  
-        </style>
+         </style>
     </head>
     <body>
         <%response.setIntHeader("Refresh", 10);%>
         <div class='head'>
          <h1>
             原報告：<br>
-            今日研究報告:台積電將在大陸設晶圓廠 ...
         </h1>   
         </div>
         <h1>
-         加值報告：<br> <!--  △ ▽ -->
-         今日研究報告:<br>
-         台積電:
-            <my:report></my:report><input type='button' value='下單' id='a' />將在大陸設晶圓廠 ...
+  今日研究報告:<my:report2 symbol="2330.TW" ></my:report2><input type='button' value='下單' id='a' />將在大陸設晶圓廠<br/>
+            2.<my:report2 symbol="2308.TW" ></my:report2><input type='button' value='下單' id='a' />....<br/>
+            3.<my:report2 symbol="2317.TW" ></my:report2><input type='button' value='下單' id='a' />....<br/>
+            4.<my:report2 symbol="AAPL" ></my:report2><input type='button' value='下單' id='a' />.....
+            
         </h1>
     </body>
 </html>
