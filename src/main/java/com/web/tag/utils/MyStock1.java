@@ -58,9 +58,10 @@ public class MyStock1 {
             this.name = stock.getName();
             this.price = stock.getQuote().getPrice().doubleValue();
             this.change = stock.getQuote().getChangeInPercent().doubleValue();
-            this.color = (this.change > 0) ? RED : (this.change < 0) ? GREEN : BLACK;
-            this.backcolor = (this.change > 0) ? RED : GREEN;
-            this.volume = stock.getQuote().getVolume().doubleValue();
+            this.color =  (Math.round(this.change)>=10) ? YELLOW : (Math.round(this.change)<=-10) ? YELLOW : null;
+            this.backcolor = (Math.round(this.change) >=10) ? RED : (Math.round(this.change)<=-10) ? GREEN :null;
+            
+            this.volume = stock.getQuote().getVolume().doubleValue() ;
             this.Hight = stock.getQuote().getDayHigh().doubleValue();
             this.low = stock.getQuote().getDayLow().doubleValue();
             this.colse = stock.getQuote().getPreviousClose().doubleValue();

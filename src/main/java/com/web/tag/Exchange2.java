@@ -54,10 +54,12 @@ private  String symbol2;
             Stock stock2 = YahooFinance.get(symbol2);
             if (stock !=null) {
            double price = stock.getQuote().getPrice().doubleValue(); //得到金額
+           
            out.print("1");
            out.print(symbol.substring(0,3)+" ");
            out.print(price+"");
            out.print(symbol.substring(3,6)+"<p/>");
+   
            
            double price2 = stock2.getQuote().getPrice().doubleValue(); //得到金額
            out.print("1");
