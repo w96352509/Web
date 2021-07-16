@@ -13,6 +13,7 @@ public class MyRestApplication extends  Application{ //rest的跟
         //註冊 Rest service
         Set<Class<?>> classes = new LinkedHashSet();
         classes.add(HelloService.class);
+        classes.add(BMIService.class);
         return super.getClasses(); //哪些class是rest將註冊進去
    }
    
