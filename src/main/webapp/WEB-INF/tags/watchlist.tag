@@ -17,7 +17,7 @@
         </tr>
     </thead>
     <tbody>
-        <c:forEach varStatus="status" var="symbol" items="${fn:split(symbols, ',')}">
+            <c:forEach varStatus="status" var="symbol" items="${fn:split(symbols, ',')}">
             <jsp:useBean class="com.web.tag.utils.MyStock" id="myStock" />
             <jsp:setProperty name="myStock" property="symbol" value="${ symbol }" />
 

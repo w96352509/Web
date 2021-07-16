@@ -6,7 +6,6 @@ import java.net.URI;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
-import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
@@ -19,14 +18,14 @@ import javax.ws.rs.core.Response;
 public class BookService {
 
     @Path("/")
-    @GET
+    @POST
     @Produces("text/plain")
     public String getBooks() {
         return BookDao.getBooks().toString();
     }
     
     @Path("/{id}")
-    @GET
+    @POST
     @Produces("text/plain")
     public String getBook(@PathParam("id") Integer id) {
         return BookDao.getBook(id).toString();
@@ -45,7 +44,7 @@ public class BookService {
             URI location = URI.create("http://localhost:8080/JavaWeb0531/forms/rest_book.jsp");
             return Response.temporaryRedirect(location).build();
         } else {
-            return Response.status(500, "create error").build();
+            return Response.status(500).build();
         }
         //return BookDao.createBook(book).toString();
     }

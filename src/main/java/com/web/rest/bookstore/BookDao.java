@@ -8,10 +8,13 @@ public class BookDao {
     // 書籍資料庫
     public static List<Book> books = new ArrayList<>();
     
+    
+    
     // 多筆查詢
     public static List<Book> getBooks() {
         return books;
     }
+  
     
     // 單筆查詢
     public static Book getBook(Integer id) {
@@ -21,12 +24,14 @@ public class BookDao {
                 .get();
     } 
     
+     // 單筆查詢
+   
     // 新增
     public static Boolean createBook(Book book) {
         boolean flag = books.stream()
                 .filter(b -> b.getId() == book.getId())
                 .findAny()
-                .isPresent();
+                .isPresent(); //有直存在回傳 ture 反之 false
         if(flag == false) {
             books.add(book);
             return true;

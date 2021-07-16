@@ -1,5 +1,6 @@
 <%@page import="com.web.rest.bookstore.BookDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -11,7 +12,26 @@
         <form class="pure-form">
             <fieldset>
                 <legend>Rest Book List</legend>
-                ${ BookDao.books }
+                <table class="pure-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>id</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <c:forEach varStatus="status" var="book" items="${ BookDao.books }">
+                        <tbody>
+                            <tr>
+                                <td>${status.index}</td>
+                                <td>${book.id}</td>
+                                <td>${book.name}</td>
+                                <td>${book.price}</td>
+                            </tr> 
+                        </c:forEach>
+                    </tbody>
+                </table>
             </fieldset>
         </form>
 
@@ -36,7 +56,7 @@
                       method="post" action="/JavaWeb0531/rest/book">
                     <fieldset>
                         <legend>Rest Book PUT</legend>
-                        <input name="_method" type="hidden" value="PUT"/>
+                        <input name="_method" type="hidden" value="PUT" />
                         <input name="id" type="text" placeholder="id"><p /> 
                         <input name="name" type="text" placeholder="名稱"><p /> 
                         <input name="price" type="text" placeholder="價格"><p />
@@ -52,7 +72,7 @@
                       method="post" action="/JavaWeb0531/rest/book">
                     <fieldset>
                         <legend>Rest Book Delete</legend>
-                        <input name="_method" type="hidden" value="DELETE"/>
+                        <input name="_method" type="hidden" value="DELETE" />
                         <input name="id" type="text" placeholder="id"><p /> 
                         <p />
                         <button type="submit" 
