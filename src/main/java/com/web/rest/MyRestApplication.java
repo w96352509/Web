@@ -5,15 +5,15 @@ import java.util.Set;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
-@ApplicationPath("/rest")
-public class MyRestApplication extends  Application{
+@ApplicationPath("/rest") //此路徑後 都套用rest
+public class MyRestApplication extends  Application{ //rest的跟 
 
     @Override
     public Set<Class<?>> getClasses() {
         //註冊 Rest service
         Set<Class<?>> classes = new LinkedHashSet();
-        
-        return super.getClasses(); //那些class是rest將註冊進去
+        classes.add(HelloService.class);
+        return super.getClasses(); //哪些class是rest將註冊進去
    }
    
 }
