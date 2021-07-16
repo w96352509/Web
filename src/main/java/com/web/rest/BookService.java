@@ -6,6 +6,7 @@ import java.net.URI;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
@@ -16,16 +17,16 @@ import javax.ws.rs.core.Response;
 
 @Path("/book")
 public class BookService {
-
+//取得book所有資料
     @Path("/")
-    @POST
+    @GET //因要取得網址訊息使用GET
     @Produces("text/plain")
     public String getBooks() {
         return BookDao.getBooks().toString();
     }
-    
+    //取得book單筆資料
     @Path("/{id}")
-    @POST
+    @GET //因要取得網址訊息使用GET
     @Produces("text/plain")
     public String getBook(@PathParam("id") Integer id) {
         return BookDao.getBook(id).toString();
@@ -33,7 +34,7 @@ public class BookService {
     
     @Path("/")
     @POST
-    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)  //因用post取得表單需要編碼
     @Produces(MediaType.TEXT_PLAIN)
     public Response createBook(@FormParam("id") Integer id, 
                              @FormParam("name") String name,

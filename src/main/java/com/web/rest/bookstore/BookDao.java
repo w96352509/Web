@@ -24,7 +24,7 @@ public class BookDao {
                 .get();
     } 
     
-     // 單筆查詢
+   
    
     // 新增
     public static Boolean createBook(Book book) {
