@@ -3,12 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@attribute name="symbols" required="true" rtexprvalue="true"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-    
-
-
-
-    
-
+<c:url  value="/images/peko.jpg" var="peko" ></c:url>
 <table class="pure-table">
     <thead>
         <tr>
@@ -18,7 +13,7 @@
             <th>買價</th>
             <th>賣價</th>
             <th>漲幅</th>
-            <th>漲跌</th>
+            
             <th>成交量</th>
             <th>開盤</th>
             <th>最高</th>
@@ -28,9 +23,7 @@
             <th>交易</th>
         </tr>
     </thead>
-    <div id="menu" style="height:200px;width:100px;float:right;">
-
-    </div>
+    
     <tbody>
         <c:forEach varStatus="status" var="symbol" items="${fn:split(symbols, ',')}">
             <jsp:useBean class="com.web.tag.utils.MyStock1" id="myStock" />
@@ -43,20 +36,22 @@
                 <td>${myStock.bid}</td>
                 <td>${myStock.ask}</td>
                 <td style="background-color: ${ myStock.backcolor};color : ${ myStock.color }">
-                    (${myStock.bid-myStock.ask})
+                    (<fmt:formatNumber value="${myStock.bid-myStock.ask}" maxFractionDigits="2"/>)
                     ${ myStock.change}%</td>
-                <td>不會算</td>
+                
                 <td> <fmt:formatNumber type="number" maxFractionDigits="3"
-                                       value="${myStock.volume}" /> </td>
+                                  value="${myStock.volume}" /> </td>
 
-   
-    <td>${myStock.open}</td>
-    <td>${myStock.hight}</td>
-    <td>${myStock.low}</td>
-    <td>${(myStock.open - myStock.colse).floatValue()}</td>
-    <td>${myStock.colse}</td>
-    <td><a class="pure-button pure-button-primary" href="#">下單</a></td>
-</tr>
-</c:forEach>
-</tbody>
+
+                <td>${myStock.open}</td>
+                <td>${myStock.hight}</td>
+                <td>${myStock.low}</td>
+                <td>${(myStock.open - myStock.colse).floatValue()}</td>
+                <td>${myStock.colse}</td>
+                <td>
+                    <a class="pure-button pure-button-primary" href="${peko}">下單</a>
+                </td>
+            </tr>
+        </c:forEach>
+    </tbody>
 </table>
