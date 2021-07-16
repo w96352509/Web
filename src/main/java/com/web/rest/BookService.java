@@ -6,6 +6,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -38,5 +39,16 @@ public class BookService {
                                          @FormParam("price") Integer price) {
         Book book = new  Book(id , name ,price);
         return BookDao.createBook(book).toString();
+    }
+    
+    @Path("/")
+    @PUT
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Produces(MediaType.TEXT_PLAIN)
+    public String updataeBooks(@FormParam("id") Integer id ,
+                                          @FormParam("name") String name,
+                                         @FormParam("price") Integer price) {
+        Book book = new  Book(id , name ,price);
+        return BookDao.updateBook(id, book).toString();
     }
    }
