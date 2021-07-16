@@ -14,6 +14,7 @@ public class MyRestApplication extends  Application{ //rest的跟
         Set<Class<?>> classes = new LinkedHashSet();
         classes.add(HelloService.class);
         classes.add(BMIService.class);
+        classes.add(BookService.class);
         return super.getClasses(); //哪些class是rest將註冊進去
    }
    
