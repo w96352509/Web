@@ -15,7 +15,8 @@ public class Book {
         this.name = name;
         this.price = price;
     }
-
+    
+    
     
     public Integer getId() {
         return id;
@@ -44,9 +45,9 @@ public class Book {
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 29 * hash + Objects.hashCode(this.id);
-        hash = 29 * hash + Objects.hashCode(this.name);
-        hash = 29 * hash + Objects.hashCode(this.price);
+        hash = 37 * hash + Objects.hashCode(this.id);
+        hash = 37 * hash + Objects.hashCode(this.name);
+        hash = 37 * hash + Objects.hashCode(this.price);
         return hash;
     }
 
@@ -73,7 +74,7 @@ public class Book {
         }
         return true;
     }
-
+    
     
     
     @Override
