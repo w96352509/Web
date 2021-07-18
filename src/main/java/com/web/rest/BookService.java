@@ -16,12 +16,13 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 @Path("/book")
-public class BookService {
+public class BookService{
 //取得book所有資料
     @Path("/")
     @GET //因要取得網址訊息使用GET
     @Produces("text/plain")
     public String getBooks() {
+        
         return BookDao.getBooks().toString();
     }
     //取得book單筆資料

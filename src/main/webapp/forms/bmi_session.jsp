@@ -11,14 +11,14 @@
     <body style="padding: 20px">
         
         <form class="pure-form"
-              method="post" action="/JavaWeb0531/controller/bmi_session"
+              method="post" action="/JavaWeb0531/controller/bmi_session">
              <fieldset>
                 <legend>BMI (Session 版) 使用人數：${ applicationScope.count } 人</legend>
                 <input name="cname" type="text" placeholder="姓名" value="Vic"><p /> 
                 <input name="height" type="text" placeholder="身高" value="170"><p /> 
                 <input name="weight" type="text" placeholder="體重" value="60"><p />
                 <input name="code" type="text" placeholder="請輸入授權碼">
-                <img src="/JavaWeb0531/controller/authcode" valign="middle" /><p />
+                <img src="/JavaWeb0531/controller/authcode" valign="middle" ><p />
                
                 <button type="submit" 
                         class="pure-button pure-button-primary">傳送</button>
