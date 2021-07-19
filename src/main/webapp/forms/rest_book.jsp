@@ -10,10 +10,12 @@
         <script>
             // 較新的瀏覽器中已經有提供btoa和atob兩個全域函式，可以用來做base64的encode和decode
             function updateBook(base64str) {
-
-                //document.getElementById('uId').value = book.id;
-                //document.getElementById('uName').value = book.name;
-                //document.getElementById('uPrice').value = book.price;
+                console.log(base64str);          //顯示base64在f12 console中
+                console.log(atob(base64str)); //把base64編碼解讀成 json的字串
+                var book = JSON.parse(atob(base64str));   //把json字串轉物件
+                document.getElementById('uId').value = book.id;
+                document.getElementById('uName').value = book.name;
+                document.getElementById('uPrice').value = book.price;
             }
 
             function deleteBook(id) {
@@ -43,7 +45,7 @@
                                 <td>${ book.price }</td>
                                 <td>
                                     <button type="button" 
-                                            onclick="updateBook(${ book })"
+                                            onclick="updateBook('${ book }')"
                                             class="pure-button pure-button-primary">修改</button>
                                 </td>
                                 <td>
