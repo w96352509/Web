@@ -1,6 +1,6 @@
-<%@page import="com.web.rest.bookstore.BookDao"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="com.web.rest.bookstore.BookDao"%>
+<%@ page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,37 +12,39 @@
         <form class="pure-form">
             <fieldset>
                 <legend>Rest Book List</legend>
-                <table class="pure-table">
+                <table class="pure-table pure-table-bordered">
                     <thead>
                         <tr>
-                            <th>#</th>
                             <th>id</th>
-                            <th>Name</th>
-                            <th>Price</th>
+                            <th>name</th>
+                            <th>price</th>
+                            <th>修改</th>
+                            <th>刪除</th>
                         </tr>
                     </thead>
-                    <c:forEach varStatus="status" var="book" items="${ BookDao.books }">
-                        <tbody>
+                    <tbody>
+                        <c:forEach var="book" items="${ BookDao.getBooks() }">
                             <tr>
-                                <td><button type="button" onclick="myfunction('${book.id}','${book.name}','${book.price}')"
-                                            >選取</button></td> 
-                                <td>${book.id}</td>
-                                <td>${book.name}</td>
-                                <td>${book.price}</td>
-                            </tr> 
+                                <td>${ book.id }</td>
+                                <td>${ book.name }</td>
+                                <td>${ book.price }</td>
+                                <td>
+                                    <button type="button" 
+                                            onclick="updateBook(${ book.id }, '${ book.name }', ${ book.price })"
+                                            class="pure-button pure-button-primary">修改</button>
+                                </td>
+                                <td>
+                                    <button type="button" 
+                                            onclick="deleteBook(${ book.id })"
+                                            class="pure-button pure-button-primary">刪除</button>
+                                </td>
+                            </tr>
                         </c:forEach>
                     </tbody>
                 </table>
             </fieldset>
         </form>
-        <script>
-            function myfunction(id, name, price) {
-                 document.getElementById('updata_id').value = id;
-                document.getElementById('updata_name').value = name;
-                document.getElementById('updata_price').value = price;
-                document.getElementById('delete_id').value = id;
-            }
-        </script>
+
         <table>
             <td valign="top">
                 <form class="pure-form"
@@ -59,17 +61,15 @@
                     </fieldset>
                 </form>
             </td>
-            <div class="updata">
             <td valign="top">
                 <form class="pure-form"
                       method="post" action="/JavaWeb0531/rest/book">
                     <fieldset>
                         <legend>Rest Book PUT</legend>
                         <input name="_method" type="hidden" value="PUT" />
-                        <input name="id" type="text" placeholder="id" id="updata_id"><p /> 
-                        <input name="name" type="text" placeholder="名稱" id="updata_name"><p /> 
-                        <input name="price" type="text" placeholder="價格" id="updata_price"><p />
-
+                        <input id="uId" name="id" type="text" placeholder="id"><p /> 
+                        <input id="uName" name="name" type="text" placeholder="名稱"><p /> 
+                        <input id="uPrice" name="price" type="text" placeholder="價格"><p />
                         <p />
                         <button type="submit" 
                                 class="pure-button pure-button-primary">修改</button>
@@ -77,14 +77,13 @@
                     </fieldset>
                 </form>
             </td>
-            </div>
             <td valign="top">
                 <form class="pure-form"
                       method="post" action="/JavaWeb0531/rest/book">
                     <fieldset>
                         <legend>Rest Book Delete</legend>
                         <input name="_method" type="hidden" value="DELETE" />
-                        <input name="id" type="text" placeholder="id" id="delete_id"><p /> 
+                        <input id="dId" name="id" type="text" placeholder="id"><p /> 
                         <p />
                         <button type="submit" 
                                 class="pure-button pure-button-primary">刪除</button>
