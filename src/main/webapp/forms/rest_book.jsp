@@ -8,12 +8,14 @@
         <title>Book</title>
         <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css">
         <script>
-            function updateBook(id, name, price) {
-                document.getElementById('uId').value = id;
-                document.getElementById('uName').value = name;
-                document.getElementById('uPrice').value = price;
+            // 較新的瀏覽器中已經有提供btoa和atob兩個全域函式，可以用來做base64的encode和decode
+            function updateBook(base64str) {
+
+                //document.getElementById('uId').value = book.id;
+                //document.getElementById('uName').value = book.name;
+                //document.getElementById('uPrice').value = book.price;
             }
-            
+
             function deleteBook(id) {
                 document.getElementById('dId').value = id;
             }
@@ -41,7 +43,7 @@
                                 <td>${ book.price }</td>
                                 <td>
                                     <button type="button" 
-                                            onclick="updateBook(${ book.id }, '${ book.name }', ${ book.price })"
+                                            onclick="updateBook(${ book })"
                                             class="pure-button pure-button-primary">修改</button>
                                 </td>
                                 <td>
