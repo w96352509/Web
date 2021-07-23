@@ -66,8 +66,18 @@ public class BookDao {
                 .findAny()
                 .isPresent();
         if (flag == false) {
-            books.add(book);
-            return true;
+            String sql = "Insert into Book(name, price, amount) values(?, ?, ?)";
+            try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+                pstmt.setString(1, book.getName());
+                pstmt.setInt(2, book.getPrice());
+                pstmt.setInt(3, book.getAmount());
+                int rowcount = pstmt.executeUpdate();
+                return rowcount == 1 ? true : false;
+            } catch (Exception e) {
+                e.printStackTrace(System.out);
+                return false;
+            }
+
         }
         return false;
     }
@@ -86,6 +96,7 @@ public class BookDao {
             pstmt.setString(1, book.getName());
             pstmt.setInt(2, book.getPrice());
             pstmt.setInt(3, book.getAmount());
+            pstmt.setInt(4, id);
             //執行更新
             int rowcount = pstmt.executeUpdate(); //設id 必有一個資料受影響
             return rowcount == 1 ? true : false;
@@ -103,7 +114,16 @@ public class BookDao {
         if (oBook == null) {
             return false;
         }
-        books.remove(oBook);
-        return true;
+
+        String sql = "Delete from Book where id=?";
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, id);
+            int rowcount = pstmt.executeUpdate();
+            return rowcount == 1 ? true : false;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+            return false;
+        }
+
     }
 }
