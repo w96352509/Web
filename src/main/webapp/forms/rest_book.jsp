@@ -10,27 +10,29 @@
         <script>
             // 較新的瀏覽器中已經有提供btoa和atob兩個全域函式，可以用來做base64的encode和decode
             function updateBook(base64str) {
-                console.log(base64str);          //顯示base64在f12 console中
-                console.log(atou(base64str)); //把base64編碼解讀成 json的字串 atob不支援中文
-                var book = JSON.parse(atou(base64str));   //把json字串轉物件
+                console.log(base64str);
+                console.log(atou(base64str));
+                var jsonStr = atou(base64str);
+                var book = JSON.parse(jsonStr);
                 document.getElementById('uId').value = book.id;
                 document.getElementById('uName').value = book.name;
                 document.getElementById('uPrice').value = book.price;
+                document.getElementById('uAmount').value = book.amount;
             }
-
+            
             function deleteBook(id) {
                 document.getElementById('dId').value = id;
             }
+            
             // 使用 utf-8 進行編碼 base64
             function utoa(str) {
                 return window.btoa(unescape(encodeURIComponent(str)));
             }
-
+            
             // 使用 utf-8 進行解析 base64
             function atou(str) {
                 return decodeURIComponent(escape(window.atob(str)));
             }
-
         </script>
     </head>
     <body style="padding: 20px">
@@ -43,6 +45,7 @@
                             <th>id</th>
                             <th>name</th>
                             <th>price</th>
+                            <th>amount</th>
                             <th>修改</th>
                             <th>刪除</th>
                         </tr>
@@ -53,6 +56,7 @@
                                 <td>${ book.id }</td>
                                 <td>${ book.name }</td>
                                 <td>${ book.price }</td>
+                                <td>${ book.amount }</td>
                                 <td>
                                     <button type="button" 
                                             onclick="updateBook('${ book }')"
@@ -79,6 +83,7 @@
                         <input name="id" type="text" placeholder="id"><p /> 
                         <input name="name" type="text" placeholder="名稱"><p /> 
                         <input name="price" type="text" placeholder="價格"><p />
+                        <input name="amount" type="text" placeholder="數量"><p />
                         <p />
                         <button type="submit" 
                                 class="pure-button pure-button-primary">新增</button>
@@ -95,6 +100,7 @@
                         <input id="uId" name="id" type="text" placeholder="id" readonly><p /> 
                         <input id="uName" name="name" type="text" placeholder="名稱"><p /> 
                         <input id="uPrice" name="price" type="text" placeholder="價格"><p />
+                        <input id="uAmount" name="amount" type="text" placeholder="數量"><p />
                         <p />
                         <button type="submit" 
                                 class="pure-button pure-button-primary">修改</button>
