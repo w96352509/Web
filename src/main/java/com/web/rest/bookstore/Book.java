@@ -5,7 +5,6 @@ import java.util.Base64;
 import java.util.Objects;
 
 public class Book {
-
     private Integer id;
     private String name;
     private Integer price;
@@ -56,10 +55,10 @@ public class Book {
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 97 * hash + Objects.hashCode(this.id);
-        hash = 97 * hash + Objects.hashCode(this.name);
-        hash = 97 * hash + Objects.hashCode(this.price);
-        hash = 97 * hash + Objects.hashCode(this.amount);
+        hash = 89 * hash + Objects.hashCode(this.id);
+        hash = 89 * hash + Objects.hashCode(this.name);
+        hash = 89 * hash + Objects.hashCode(this.price);
+        hash = 89 * hash + Objects.hashCode(this.amount);
         return hash;
     }
 
@@ -91,7 +90,6 @@ public class Book {
     }
 
     
-
     @Override
     public String toString() {
         String json = new Gson().toJson(this);
@@ -101,5 +99,5 @@ public class Book {
             return null;
         }
     }
-
+    
 }
