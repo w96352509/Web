@@ -15,18 +15,21 @@
                 ws = new WebSocket(chaturl); // 發送連線
                 ws.onopen = function(evt) { // Server 回應
                     console.log('server onopen:' + evt.data);
+                    result.insertAdjacentHTML("beforeend", '連到 server <br>');
                 };
                 ws.onmessage = function(evt) { // Server 回應
                     console.log('server onmessage:' + evt.data);
+                    result.insertAdjacentHTML("beforeend", evt.data + '<br>');
                 };
                 ws.onclose = function(evt) { // Server 回應
                     console.log('server onclose:' + evt);
+                    result.insertAdjacentHTML("beforeend", '關閉連線 <br>');
                     ws = null;
                 };
             }
             
             function send() {
-                
+                ws.send(message.value);
             }
             
             function onClose() {
@@ -55,5 +58,6 @@
                         onclick="onClose()">Close</button>
             </fieldset>
         </form>
+        <div id="result"></div>
     </body>
 </html>
