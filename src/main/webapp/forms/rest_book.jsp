@@ -46,6 +46,7 @@
             }
             function deleteBook(id) {
                 document.getElementById('dId').value = id;
+                document.getElementById('btn_delete').click();
             }
             // 使用 utf-8 進行編碼 base64
             function utoa(str) {
@@ -154,11 +155,11 @@
                       onsubmit="return deleteConfirm();"
                       method="post" action="/JavaWeb0531/rest/book">
                     <fieldset>
-                        <legend>Rest Book Delete</legend>
+                        
                         <input name="_method" type="hidden" value="DELETE" />
-                        <input id="dId" name="id" type="text" placeholder="id" readonly><p /> 
+                        <input id="dId" name="id" type="hidden" placeholder="id" readonly><p /> 
                         <p />
-                        <button type="submit" 
+                        <button type="submit"  id="btn_delete" style="display:none;"
                                 class="pure-button pure-button-primary">刪除</button>
 
                     </fieldset>
