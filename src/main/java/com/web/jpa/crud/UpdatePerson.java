@@ -14,9 +14,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/jpa/person/create")
-public class CreatePerson extends HttpServlet {
-
+@WebServlet("/jpa/person/update")
+public class UpdatePerson extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("utf-8");
@@ -25,22 +24,26 @@ public class CreatePerson extends HttpServlet {
         PrintWriter out = resp.getWriter();
         Faker faker = new Faker();
         Random r = new Random();
-        // 建立 Person
-        Person person = new Person();
-        person.setName(faker.pokemon().name());
-        person.setAge(r.nextInt(20));
         // 取得 EntityManagerFactory
         EntityManagerFactory emf = (EntityManagerFactory)getServletContext().getAttribute("emf");
         // 取得 EntityManger
         EntityManager em = emf.createEntityManager();
-        // 操作 CRUD
+        // 取得 id=1 的 Person
+        long id = 1;
+        Person person = em.find(Person.class, id);
+        if(person == null) {
+            out.print("查無此人");
+            em.close();
+            return;
+        }
+        // 修改 person 的 age
+        person.setAge(r.nextInt(20));
         // 建立交易模式
         EntityTransaction et = em.getTransaction();
         et.begin(); // 交易開始
-        em.persist(person); // 將 person 持久化 (Save/Update)
+        em.merge(person); // merge (Save/Update), persist (Update)
         et.commit();// 提交
         em.close();// 關閉
-        out.print(person + " 建立成功");
+        out.print(person + " 修改成功");
     }
-    
 }

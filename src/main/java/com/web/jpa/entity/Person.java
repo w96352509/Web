@@ -7,22 +7,28 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "Person")
+@NamedQueries({
+    @NamedQuery(name = "Person.findAll", query = "select p from Person p"),
+    @NamedQuery(name = "Person.findByAge", query = "select p from Person p where p.age>=:age")
+})
 public class Person implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     @Column(name = "name", length = 50, nullable = false)
     private String name;
-    
+
     @Column(name = "age", nullable = true)
     private Integer age;
-    
+
     @Column
     private Date ts = new Date();
 
@@ -57,9 +63,7 @@ public class Person implements Serializable {
     public void setTs(Date ts) {
         this.ts = ts;
     }
-    
-    
-    
+
     public Long getId() {
         return id;
     }
@@ -72,7 +76,5 @@ public class Person implements Serializable {
     public String toString() {
         return "Person{" + "id=" + id + ", name=" + name + ", age=" + age + ", ts=" + ts + '}';
     }
-    
-    
-    
+
 }
