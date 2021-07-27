@@ -33,7 +33,7 @@ public class QueryPerson extends HttpServlet {
         out.print("<hr>");
         // 帶入條件查詢
         list = em.createNamedQuery("Person.findByAge")
-                .setParameter("age", 18)
+                .setParameter("age", 10)
                 .getResultList();
         out.print(list);
         
