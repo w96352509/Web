@@ -29,7 +29,7 @@
     </filter-mapping>
     <filter-mapping>
         <filter-name>Watermark</filter-name>
-        <url-pattern>/secure/*</url-pattern>
+        <url-pattern>/secure/report</url-pattern>
     </filter-mapping>
     
     <!-- 解決中文問題的 Filter -->
